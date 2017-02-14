@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="content">
+    <h2 class="content-head is-center">Entrar no sistema</h2>
+    <h2 class="content-head is-center">Cadastrar novo usuário</h2>
+    <div class="pure-g">
+        <div class="l-box-lrg pure-u-1 pure-u-md-1-5"></div>
+        <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+        <form class="pure-form pure-form-stacked" method="POST">
+            {% csrf_token %}
+            <fieldset>
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            {% endfor %}
+
+            <a href="{% url 'home'%}" class="pure-button">Voltar </a>
+            <button type="submit" class="pure-button">Continuar</button>
+            </fieldset>
+        </form>           
+        </div>
+        <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
+    </div>  
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="splash-container">
+    <div class="content">
+        <br /><br /><br />
+
+        <h2 class="content-head is-center">Entrar no sistema</h2>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}"><strong>{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                <h4>Contact Us</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+
+                <h4>Não é cadastrado? Crie um novo usuário para começar a utilizar o sistema.</h4>
+                <p>
+                    Para criar um novo usuário clique no link abaixo ou dirija-se ao campus Alexandre Alves de Oliveira - Parnaíba.
+                    <a href="{% url 'pessoas:novo_usuario'%}" class="pure-menu-link">Clique aqui para criar um Novo Usuário</a>  
+                </p>
+            </div>
+
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+
+                <form class="pure-form pure-form-stacked" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        {{ form.non_field_errors }}
+
+                        {% for field in form %}
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {{ field.errors }}
+                        {% endfor %}
+
+                        <button type="submit" class="pure-button">Entrar</button>
+                    </fieldset>
+                </form>           
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
