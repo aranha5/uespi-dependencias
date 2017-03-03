@@ -1,2 +1,4 @@
 *.pyc
 staticfiles
+runtime.txt
+Procfilee
